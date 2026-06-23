@@ -31,15 +31,6 @@ const fadeUpVariants: Variants = {
   }),
 };
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, x: 60, scale: 0.94 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: { duration: 1, ease: [0.16, 1, 0.3, 1], delay },
-  }),
-};
 
 function SplitChars({
   text,
@@ -116,22 +107,30 @@ function TeamCard({
 }) {
   return (
     <motion.div
-      custom={0.15 * index}
-      variants={cardVariants}
-      onClick={onClick}
-      whileHover={{ scale: isActive ? 1 : 1.02 }}
-      animate={{
-        scale: isActive ? 1 : 0.95,
-        opacity: isActive ? 1 : 0.6,
-        transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
-      }}
-      className="relative flex rounded-2xl overflow-hidden cursor-pointer
-      border border-white/5"
-      style={{
-        height: isActive ? "180px" : "130px",
-        transition: "height 0.5s cubic-bezier(0.16,1,0.3,1)",
+      initial={{ opacity: 0, x: 60, scale: 0.94 }}
+      whileInView={{ opacity: 1, x: 0, scale: 1 }}
+      viewport={{ once: false, margin: "-8% 0px" }}
+      transition={{
+        duration: 1,
+        ease: [0.16, 1, 0.3, 1],
+        delay: 0.15 * index,
       }}
     >
+      <motion.div
+        onClick={onClick}
+        whileHover={{ scale: isActive ? 1 : 1.02 }}
+        animate={{
+          scale: isActive ? 1 : 0.95,
+          opacity: isActive ? 1 : 0.6,
+          transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+        }}
+        className="relative flex rounded-2xl overflow-hidden cursor-pointer
+        border border-white/5"
+        style={{
+          height: isActive ? "180px" : "130px",
+          transition: "height 0.5s cubic-bezier(0.16,1,0.3,1)",
+        }}
+      >
       <div
         className={`relative w-40 flex-shrink-0 bg-gradient-to-br
         ${member.color} overflow-hidden`}
@@ -219,6 +218,7 @@ function TeamCard({
       {isActive && (
         <div className="w-px bg-white/10 self-stretch" />
       )}
+      </motion.div>
     </motion.div>
   );
 }
@@ -334,9 +334,7 @@ export default function CreativeTeamSection() {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
+          <div
             className="col-span-7 flex flex-col gap-3"
           >
             {teamMembers.map((member, index) => (
@@ -361,7 +359,7 @@ export default function CreativeTeamSection() {
                 playground
               </p>
             </motion.div>
-          </motion.div>
+          </div>
 
         </div>
       </div>
