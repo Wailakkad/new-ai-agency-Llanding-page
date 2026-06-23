@@ -1,0 +1,6 @@
+{
+  "name": "AI Agency Hero Section",
+  "description": "A dark, cinematic full-screen hero section for an AI agency featuring a responsive video background, glassmorphism widgets, interactive CTAs, and a clean minimalist design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
