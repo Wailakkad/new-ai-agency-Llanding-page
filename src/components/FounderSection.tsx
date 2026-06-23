@@ -175,27 +175,10 @@ export default function FounderSection() {
                 custom={0.1}
                 className="relative"
               >
-                {/* Photo placeholder — replace src with real founder image */}
-                <div
-                  className="w-full aspect-[3/4] rounded-2xl overflow-hidden 
-                  border border-white/10 relative"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, #0d1b2a 0%, #050505 100%)",
-                  }}
-                >
-                  {/* Moody blue overlay */}
-                  <div
-                    className="absolute inset-0 z-10"
-                    style={{
-                      background:
-                        "radial-gradient(ellipse at 30% 40%, " +
-                        "rgba(0,100,200,0.25) 0%, transparent 70%)",
-                    }}
-                  />
-                  {/* Founder image */}
+                <div>
+                {/* Founder image */}
                   <img
-                    src="/founder.jpg"
+                    src="https://res.cloudinary.com/dhkyla1rv/image/upload/v1782222146/founder.jpg"
                     alt="Founder"
                     className="w-full h-full object-cover object-top 
                     opacity-90 mix-blend-luminosity"
