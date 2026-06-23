@@ -1,5 +1,36 @@
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
 import { Sparkle, Globe, Atom, Layers, Orbit, Cpu, Compass } from "lucide-react";
+
+const charVariants: Variants = {
+  hidden: { y: "115%", opacity: 0, rotateX: -90 },
+  visible: (i: number) => ({
+    y: "0%",
+    opacity: 1,
+    rotateX: 0,
+    transition: {
+      duration: 1.1,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.1 + i * 0.04,
+    },
+  }),
+};
+
+function SplitChars({ text, baseDelay = 0 }: { text: string; baseDelay?: number }) {
+  return (
+    <span style={{ display: "inline-block", overflow: "hidden" }}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          custom={baseDelay + i}
+          variants={charVariants}
+          style={{ display: "inline-block", whiteSpace: "pre", perspective: "800px" }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
 
 export default function TeamIntroSection() {
   const partnerLogos = [
@@ -43,19 +74,29 @@ export default function TeamIntroSection() {
 
         {/* 2. HEADLINE (center-aligned) */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.1 }}
           className="text-center max-w-4xl mx-auto mb-16"
           id="about-section-headline-wrapper"
         >
           <h2 className="text-3xl sm:text-5xl md:text-[54px] font-extrabold tracking-tight leading-[1.12] text-white select-none">
-            As a tight-knit team of experts,<br />
-            we create memorable and<br />
-            emotional websites,{" "}
+            <div style={{ overflow: "hidden" }}>
+              <SplitChars text="As a tight-knit team of experts," baseDelay={0} />
+            </div>
+            <div style={{ overflow: "hidden" }}>
+              <SplitChars text="we create memorable and" baseDelay={30} />
+            </div>
+            <div style={{ overflow: "hidden" }}>
+              <SplitChars text="emotional websites," baseDelay={56} />
+            </div>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 drop-shadow-[0_0_20px_rgba(6,182,212,0.25)]">
-              digital experiences, and native apps.
+              <div style={{ overflow: "hidden" }}>
+                <SplitChars text="digital experiences," baseDelay={80} />
+              </div>
+              <div style={{ overflow: "hidden" }}>
+                <SplitChars text="and native apps." baseDelay={102} />
+              </div>
             </span>
           </h2>
         </motion.div>

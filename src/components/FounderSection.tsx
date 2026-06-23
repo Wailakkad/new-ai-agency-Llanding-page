@@ -26,6 +26,20 @@ const maskRevealVariants: Variants = {
   }),
 };
 
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.35 + i * 0.05,
+    },
+  }),
+};
+
 const charVariants: Variants = {
   hidden: { y: "110%", opacity: 0, rotateX: 90 },
   visible: (i: number) => ({
@@ -240,124 +254,27 @@ export default function FounderSection() {
             />
 
             <motion.p
-              variants={fadeUpVariants}
-              custom={0.35}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
               className="text-white/50 text-sm leading-relaxed max-w-[200px]"
             >
-              He work with passion and creative. Over 16+ years experience.{" "}
-              <span className="text-white/80">
-                Willing to make more exceptional.
-              </span>
+              {"He work with passion and creative. Over 16+ years experience. Willing to make more exceptional.".split(" ").map((word, i) => (
+                <motion.span
+                  key={i}
+                  custom={i}
+                  variants={wordVariants}
+                  className={i >= 8 ? "text-white/80" : "text-white/50"}
+                  style={{ display: "inline-block", marginRight: "0.3em" }}
+                >
+                  {word}
+                </motion.span>
+              ))}
             </motion.p>
           </div>
         </motion.div>
       </div>
 
-      {/* ── BOTTOM PART: Glow Visual + Play Button ── */}
-      <div className="relative flex flex-col items-center justify-center 
-      py-20 mt-8 overflow-hidden">
-
-        {/* Ambient background glow */}
-        <motion.div
-          style={{ y: glowY }}
-          className="absolute inset-0 flex items-center justify-center 
-          pointer-events-none"
-        >
-          <div
-            className="w-[500px] h-[300px] rounded-full blur-[120px] opacity-20"
-            style={{
-              background:
-                "radial-gradient(ellipse, #00c6ff 0%, #0072ff 50%, transparent 80%)",
-            }}
-          />
-        </motion.div>
-
-        {/* Glowing 3D Logo */}
-        <motion.div
-          style={{ y: glowY }}
-          variants={glowPulse}
-          animate="animate"
-          className="relative z-10 mb-8"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.7, y: 40 }}
-            animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-            transition={{
-              duration: 1.2,
-              ease: [0.16, 1, 0.3, 1],
-              delay: 0.5,
-            }}
-            className="relative w-48 h-48 md:w-64 md:h-64 flex items-center 
-            justify-center"
-          >
-            {/* Glow layers */}
-            <div
-              className="absolute inset-0 rounded-full blur-3xl opacity-60"
-              style={{
-                background:
-                  "radial-gradient(circle, #00c6ff 0%, #0072ff 40%, transparent 70%)",
-              }}
-            />
-            {/* Geometric cross/logo shape */}
-            <svg
-              viewBox="0 0 120 120"
-              className="relative z-10 w-full h-full drop-shadow-2xl"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <linearGradient id="glowGrad" x1="0%" y1="0%" 
-                  x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#7df9ff" />
-                  <stop offset="50%" stopColor="#00c6ff" />
-                  <stop offset="100%" stopColor="#0040ff" />
-                </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              {/* Four quadrant shapes like PlayStation cross */}
-              <rect x="10" y="10" width="45" height="45" rx="8"
-                fill="url(#glowGrad)" opacity="0.9" filter="url(#glow)" />
-              <rect x="65" y="10" width="45" height="45" rx="8"
-                fill="url(#glowGrad)" opacity="0.7" filter="url(#glow)" />
-              <rect x="10" y="65" width="45" height="45" rx="8"
-                fill="url(#glowGrad)" opacity="0.7" filter="url(#glow)" />
-              <rect x="65" y="65" width="45" height="45" rx="8"
-                fill="url(#glowGrad)" opacity="0.5" filter="url(#glow)" />
-              {/* Center cross bars */}
-              <rect x="52" y="10" width="16" height="100" rx="4"
-                fill="url(#glowGrad)" opacity="0.4" />
-              <rect x="10" y="52" width="100" height="16" rx="4"
-                fill="url(#glowGrad)" opacity="0.4" />
-            </svg>
-          </motion.div>
-        </motion.div>
-
-        {/* Play Button */}
-        <motion.button
-          initial={{ opacity: 0, y: 20, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
-          whileHover={{
-            scale: 1.08,
-            backgroundColor: "#00c6ff",
-            color: "#000",
-            transition: { duration: 0.25 },
-          }}
-          whileTap={{ scale: 0.95 }}
-          className="relative z-20 flex items-center gap-2 px-6 py-3 
-          rounded-full bg-white text-black text-sm font-semibold 
-          shadow-2xl cursor-pointer border-0 outline-none"
-        >
-          <span className="w-0 h-0 border-t-4 border-b-4 border-l-8 
-          border-transparent border-l-current" />
-          Play
-        </motion.button>
-      </div>
+      
     </section>
   );
 }
