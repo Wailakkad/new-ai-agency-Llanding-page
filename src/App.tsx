@@ -14,7 +14,11 @@ import ServicesSection from "./components/ServicesSection";
 import FeaturedProjectSection from "./components/FeaturedProjectSection";
 import FounderSection from "./components/FounderSection";
 import AchievementsSection from "./components/AchievementsSection";
- 
+import StatisticsSection from "./components/StatisticsSection";
+import CreativeTeamSection from "./components/CreativeTeamSection";
+import TestimonialSection from "./components/TestimonialSection";
+import PricingSection from "./components/PricingSection";
+
 export default function App() {
   const [activeTab, setActiveTab] = useState("studio");
   
@@ -384,6 +388,10 @@ export default function App() {
       <FeaturedProjectSection />
       <FounderSection />
       <AchievementsSection />
+      <StatisticsSection />
+      <CreativeTeamSection />
+      <TestimonialSection />
+      <PricingSection />
 
       {/* 5. PORTAL SIDE MENU OVERLAY (SLIDES IN WHEN CLICKING "MENU" TOP-RIGHT) */}
       <AnimatePresence>
