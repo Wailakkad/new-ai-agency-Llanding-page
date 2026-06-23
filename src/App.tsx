@@ -18,6 +18,8 @@ import StatisticsSection from "./components/StatisticsSection";
 import CreativeTeamSection from "./components/CreativeTeamSection";
 import TestimonialSection from "./components/TestimonialSection";
 import PricingSection from "./components/PricingSection";
+import ContactSection from "./components/ContactSection";
+import FooterSection from "./components/FooterSection";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("studio");
@@ -392,6 +394,8 @@ export default function App() {
       <CreativeTeamSection />
       <TestimonialSection />
       <PricingSection />
+      <ContactSection />
+      <FooterSection />
 
       {/* 5. PORTAL SIDE MENU OVERLAY (SLIDES IN WHEN CLICKING "MENU" TOP-RIGHT) */}
       <AnimatePresence>

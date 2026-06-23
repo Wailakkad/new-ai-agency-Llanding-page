@@ -80,7 +80,7 @@ const teamMembers = [
     role: "The Creative",
     tags: ["Art Direction", "Visual"],
     socials: ["\uD835\uDD4F", "in", "\u25CE"],
-    photo: "/team-1.jpg",
+    photo: "https://res.cloudinary.com/dhkyla1rv/image/upload/v1782221228/Art_Director.jpg",
     color: "from-purple-900/60 to-blue-900/40",
   },
   {
@@ -89,7 +89,7 @@ const teamMembers = [
     role: "The Dynamic",
     tags: ["UI Design", "Graphic"],
     socials: ["\uD835\uDD4F", "in", "\u25CE"],
-    photo: "/team-2.jpg",
+    photo: "https://res.cloudinary.com/dhkyla1rv/image/upload/v1782221228/UIUX_Designer.jpg",
     color: "from-blue-900/60 to-cyan-900/40",
   },
   {
@@ -98,7 +98,7 @@ const teamMembers = [
     role: "The Builder",
     tags: ["Dev", "Motion"],
     socials: ["\uD835\uDD4F", "in", "\u25CE"],
-    photo: "/team-3.jpg",
+    photo: "https://res.cloudinary.com/dhkyla1rv/image/upload/v1782221232/Motion_Designer.jpg",
     color: "from-indigo-900/60 to-blue-900/40",
   },
 ];
@@ -147,8 +147,10 @@ function TeamCard({
         <img
           src={member.photo}
           alt={member.name}
+          crossOrigin="anonymous"
+          loading="lazy"
           className="w-full h-full object-cover object-top
-          opacity-80 mix-blend-luminosity"
+          opacity-90"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.style.display = "none";
