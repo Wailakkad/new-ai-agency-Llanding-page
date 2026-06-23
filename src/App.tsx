@@ -10,6 +10,8 @@ import ServicesModal from "./components/ServicesModal";
 import BookingModal from "./components/BookingModal";
 import ProjectsModal from "./components/ProjectsModal";
 import TeamIntroSection from "./components/TeamIntroSection";
+import ServicesSection from "./components/ServicesSection";
+import FeaturedProjectSection from "./components/FeaturedProjectSection";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("studio");
@@ -375,6 +377,9 @@ export default function App() {
 
       {/* ABOUT US / TEAM INTRO SECTION */}
       <TeamIntroSection />
+
+      <ServicesSection />
+      <FeaturedProjectSection />
 
       {/* 5. PORTAL SIDE MENU OVERLAY (SLIDES IN WHEN CLICKING "MENU" TOP-RIGHT) */}
       <AnimatePresence>
