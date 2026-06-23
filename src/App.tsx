@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, Variants } from "motion/react";
 import { Sparkle, Star, Instagram, Facebook, Linkedin, Play, Pause, RefreshCw, Volume2, VolumeX, HelpCircle, ArrowRight } from "lucide-react";
 
 import Navigation from "./components/Navigation";
@@ -20,6 +20,69 @@ import TestimonialSection from "./components/TestimonialSection";
 import PricingSection from "./components/PricingSection";
 import ContactSection from "./components/ContactSection";
 import FooterSection from "./components/FooterSection";
+
+const charVariants: Variants = {
+  hidden: { y: "115%", opacity: 0, rotateX: -90 },
+  visible: (i: number) => ({
+    y: "0%",
+    opacity: 1,
+    rotateX: 0,
+    transition: {
+      duration: 1.1,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.2 + i * 0.04,
+    },
+  }),
+};
+
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.6 + i * 0.04,
+    },
+  }),
+};
+
+function SplitChars({ text, baseDelay = 0 }: { text: string; baseDelay?: number }) {
+  return (
+    <span style={{ display: "inline-block", overflow: "hidden" }}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          custom={baseDelay + i}
+          variants={charVariants}
+          style={{ display: "inline-block", whiteSpace: "pre", perspective: "800px" }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
+function SplitWords({ text, baseDelay = 0, className = "" }: { text: string; baseDelay?: number; className?: string }) {
+  return (
+    <>
+      {text.split(" ").map((word, i) => (
+        <motion.span
+          key={i}
+          custom={baseDelay + i}
+          variants={wordVariants}
+          className={className}
+          style={{ display: "inline-block", marginRight: "0.3em" }}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </>
+  );
+}
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("studio");
@@ -168,15 +231,17 @@ export default function App() {
           id="top-right-disciplines-tag-container"
         >
           {/* Sits underneath the main menu perfectly */}
-          <div 
+          <motion.div
+            initial="hidden"
+            animate="visible"
             className="rotate-90 origin-right translate-x-[44%] flex items-center gap-5 text-[10px] tracking-[0.25em] font-mono text-white/40 uppercase whitespace-nowrap"
             id="vertical-disciplines-list"
           >
-            <span className="text-zinc-500">/we do</span>
-            <span className="text-[#00BFFF] font-bold shadow-xs">BRANDING</span>
-            <span className="text-[#00BFFF] font-bold">AI DESIGN</span>
-            <span className="text-zinc-500">CHATBOT</span>
-          </div>
+            <span className="text-zinc-500 flex"><SplitChars text="/we do" baseDelay={0} /></span>
+            <span className="text-[#00BFFF] font-bold shadow-xs flex"><SplitChars text="BRANDING" baseDelay={8} /></span>
+            <span className="text-[#00BFFF] font-bold flex"><SplitChars text="AI DESIGN" baseDelay={18} /></span>
+            <span className="text-zinc-500 flex"><SplitChars text="CHATBOT" baseDelay={28} /></span>
+          </motion.div>
         </div>
 
         {/* --- LEFT COLUMN LAYER (starts left: 4%, top: 18%) --- */}
@@ -186,49 +251,64 @@ export default function App() {
         >
           {/* Badge Pill */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            initial="hidden"
+            animate="visible"
             className="w-[195px] h-8 bg-white/8 border border-white/20 rounded-full px-3.5 flex items-center gap-2 pointer-events-auto shadow-lg select-none"
             id="creative-badge-pill"
           >
             <Sparkle size={13} className="text-cyan-400 rotate-[35deg] animate-pulse" />
-            <span className="text-[13px] font-semibold text-white tracking-wide">
-              AI-Design Agency
+            <span className="text-[13px] font-semibold text-white tracking-wide flex">
+              <SplitChars text="AI-Design Agency" baseDelay={0} />
             </span>
           </motion.div>
 
           {/* Hero Headline */}
-          <div className="flex flex-col select-none" id="hero-headline-wrapper">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col select-none"
+            id="hero-headline-wrapper"
+          >
             <h1 
               className="text-white text-[4rem] sm:text-[5rem] lg:text-[5.5rem] font-extrabold tracking-tight leading-[0.98] font-display flex flex-col"
               id="hero-massive-headline"
             >
               <div className="flex items-center gap-4 flex-wrap" id="headline-line-1">
-                <span>Your AI</span>
+                <div style={{ overflow: "hidden" }}>
+                  <SplitChars text="Your AI" baseDelay={0} />
+                </div>
                 {/* Secondary idea-to-design small label block */}
-                <div 
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 1.2 }}
                   className="inline-flex flex-col text-[10px] sm:text-[11px] uppercase tracking-wider text-zinc-400 border-l border-white/15 pl-3 leading-tight mt-1.5"
                   id="swiss-accent-concept-badge"
                 >
                   <span className="text-zinc-500 font-mono">From Idea</span>
                   <span className="text-cyan-400 font-bold font-mono">To Design</span>
-                </div>
+                </motion.div>
               </div>
 
-              <span id="headline-line-2">Design Team</span>
-              <span id="headline-line-3">On Demand</span>
+              <div style={{ overflow: "hidden" }}>
+                <SplitChars text="Design Team" baseDelay={10} />
+              </div>
+              <div style={{ overflow: "hidden" }}>
+                <SplitChars text="On Demand" baseDelay={24} />
+              </div>
             </h1>
-          </div>
+          </motion.div>
 
           {/* Subheading paragraph */}
-          <p 
+          <motion.p
+            initial="hidden"
+            animate="visible"
             className="text-[13px] sm:text-[14px] text-white/70 leading-relaxed max-w-[320px] font-normal tracking-wide select-none"
             id="hero-subheading-faded-paragraph"
           >
             <span className="text-zinc-500 font-mono mr-1.5">/</span>
-            We craft futuristic experiences where technology, emotion, and visual storytelling merge into one seamless flo...
-          </p>
+            <SplitWords text="We craft futuristic experiences where technology, emotion, and visual storytelling merge into one seamless flo..." baseDelay={0} />
+          </motion.p>
 
           {/* --- HORIZONTAL BOTTOM STAT CARDS RENDERED UNDER SUBHEADING --- */}
           <div 
@@ -251,9 +331,14 @@ export default function App() {
                 <Star key={i} size={14} className="fill-amber-400 stroke-amber-500 stroke-1" />
               ))}
             </div>
-            <span className="text-[13px] font-semibold text-white tracking-wide" id="stars-subtext">
-              3000+ Customers
-            </span>
+            <motion.span
+              initial="hidden"
+              animate="visible"
+              className="text-[13px] font-semibold text-white tracking-wide flex"
+              id="stars-subtext"
+            >
+              <SplitChars text="3000+ Customers" baseDelay={0} />
+            </motion.span>
           </div>
 
           {/* CTA Buttons Row */}
@@ -303,11 +388,16 @@ export default function App() {
             id="center-right-socials-block"
           >
             {/* Label vertically stacked */}
-            <div className="rotate-90 origin-center translate-y-[-14px] whitespace-nowrap mb-4 select-none" id="social-stack-label">
-              <span className="text-[10px] font-mono font-medium tracking-[0.25em] text-white/40 uppercase">
-                Social Presence
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              className="rotate-90 origin-center translate-y-[-14px] whitespace-nowrap mb-4 select-none"
+              id="social-stack-label"
+            >
+              <span className="text-[10px] font-mono font-medium tracking-[0.25em] text-white/40 uppercase flex">
+                <SplitChars text="Social Presence" baseDelay={0} />
               </span>
-            </div>
+            </motion.div>
 
             {/* Interactive icons group */}
             <div className="flex flex-col gap-3.5 mt-2" id="social-presence-icons-stack">
@@ -338,9 +428,13 @@ export default function App() {
           className="absolute right-3 top-1/2 transform -translate-y-1/2 rotate-90 origin-right translate-x-[44%] flex items-center gap-3.5 z-20 select-none"
           id="scroll-vert-indicator-parent"
         >
-          <span className="text-[10px] text-white/50 font-mono font-bold tracking-[0.2em] uppercase">
-            Scroll down
-          </span>
+          <motion.span
+            initial="hidden"
+            animate="visible"
+            className="text-[10px] text-white/50 font-mono font-bold tracking-[0.2em] uppercase flex"
+          >
+            <SplitChars text="Scroll down" baseDelay={0} />
+          </motion.span>
           <div className="w-12 h-[1px] bg-white/15 relative overflow-hidden" id="scroll-bar-line-animation">
             <motion.div
               animate={{ x: [-48, 48] }}
