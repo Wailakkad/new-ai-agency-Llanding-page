@@ -115,12 +115,14 @@ export default function FounderSection() {
       {/* ── TOP PART: Founder Info + Photo ── */}
       <div className="relative max-w-7xl mx-auto px-6 pt-24 pb-0">
         <motion.div
-          className="grid grid-cols-12 gap-4 items-start min-h-[70vh]"
+          className="grid grid-cols-12 gap-4 items-start min-h-auto md:min-h-[70vh]"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {/* LEFT — Badge + Info */}
-          <div className="col-span-3 pt-2 flex flex-col gap-6">
+          <div className="col-span-12 md:col-span-3 pt-2 flex flex-col 
+          gap-4 md:gap-6 flex-row md:flex-col items-center md:items-start 
+          justify-between md:justify-start">
             {/* Founder Badge */}
             <motion.div
               variants={fadeUpVariants}
@@ -152,7 +154,8 @@ export default function FounderSection() {
                 <motion.p
                   variants={charVariants}
                   custom={4}
-                  className="text-white text-5xl font-black tracking-tighter"
+                  className="text-white text-4xl md:text-5xl 
+                  font-black tracking-tighter"
                 >
                   2023
                 </motion.p>
@@ -161,7 +164,8 @@ export default function FounderSection() {
           </div>
 
           {/* CENTER — Photo */}
-          <div className="col-span-5 relative flex justify-center" ref={photoRef}>
+          <div className="col-span-12 md:col-span-5 relative flex 
+          justify-center order-first md:order-none" ref={photoRef}>
             {/* Curved "AGENCY" text top */}
             <motion.div
               variants={fadeUpVariants}
@@ -182,7 +186,8 @@ export default function FounderSection() {
             {/* Photo Card */}
             <motion.div
               style={{ scale: photoScale }}
-              className="relative w-full max-w-[280px] rounded-2xl overflow-hidden"
+              className="relative w-full max-w-[240px] sm:max-w-[280px] 
+              rounded-2xl overflow-hidden mx-auto md:mx-0"
             >
               <motion.div
                 variants={maskRevealVariants}
@@ -244,7 +249,8 @@ export default function FounderSection() {
           </div>
 
           {/* RIGHT — Bio Text */}
-          <div className="col-span-4 pt-12 flex flex-col justify-start">
+          <div className="col-span-12 md:col-span-4 pt-4 md:pt-12 
+          flex flex-col justify-start">
             {/* Decorative line */}
             <motion.div
               initial={{ scaleX: 0 }}

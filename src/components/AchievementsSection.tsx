@@ -112,7 +112,7 @@ export default function AchievementsSection() {
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center justify-between mb-12"
+          className="flex items-center justify-between mb-8 md:mb-12"
         >
           {/* Awards Badge */}
           <div className="flex items-center gap-2">
@@ -138,7 +138,8 @@ export default function AchievementsSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 0.5, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-white/50 text-xs italic text-right max-w-[180px]"
+            className="hidden sm:block text-white/50 text-xs italic 
+            text-right max-w-[180px]"
           >
             / We focus on quality products that drive result
           </motion.p>
@@ -152,8 +153,9 @@ export default function AchievementsSection() {
         >
           {/* Line 1: "We've Achieved" */}
           <div
-            className="text-[11vw] md:text-[8rem] lg:text-[9rem] font-black 
-            text-white leading-[0.9] tracking-tighter mb-2"
+            className="text-[13vw] sm:text-[11vw] md:text-[8rem] 
+            lg:text-[9rem] font-black text-white leading-[0.9] 
+            tracking-tighter mb-2"
             style={{ perspective: "1000px" }}
           >
             <AnimatedWord word="We've " baseDelay={0} />
@@ -163,8 +165,9 @@ export default function AchievementsSection() {
           {/* Line 2: "Through" + Floating Card + "'24" */}
           <div
             className="flex items-center gap-4 md:gap-6 
-            text-[11vw] md:text-[8rem] lg:text-[9rem] font-black 
-            text-white leading-[0.9] tracking-tighter mb-2 flex-wrap"
+            text-[13vw] sm:text-[11vw] md:text-[8rem] lg:text-[9rem] 
+            font-black text-white leading-[0.9] tracking-tighter 
+            mb-2 flex-wrap"
             style={{ perspective: "1000px" }}
           >
             <AnimatedWord word="Through" baseDelay={14} />
@@ -175,7 +178,7 @@ export default function AchievementsSection() {
               className="relative inline-flex flex-col rounded-xl 
               overflow-hidden border border-white/10 
               bg-[#111111] shadow-2xl cursor-pointer flex-shrink-0"
-              style={{ width: "140px", height: "80px" }}
+              style={{ width: "clamp(90px, 20vw, 140px)", height: "clamp(50px, 12vw, 80px)" }}
               whileHover={{
                 rotate: 0,
                 scale: 1.05,
@@ -207,9 +210,9 @@ export default function AchievementsSection() {
           <motion.div
             variants={ghostLineVariants}
             style={{ y: ghostParallax }}
-            className="text-[11vw] md:text-[8rem] lg:text-[9rem] font-black 
-            text-white leading-[0.9] tracking-tighter select-none 
-            pointer-events-none"
+            className="text-[13vw] sm:text-[11vw] md:text-[8rem] 
+            lg:text-[9rem] font-black text-white leading-[0.9] 
+            tracking-tighter select-none pointer-events-none"
           >
             Is The Massive
           </motion.div>

@@ -9,8 +9,8 @@ export default function ServicesSection() {
       id="services-section"
       className="relative w-full bg-[#080808] overflow-hidden py-32 px-6"
     >
-      <div className="flex items-center justify-between w-full max-w-7xl mx-auto mb-16 text-xs text-gray-400">
-        <span>[Over 30+ Skillset]</span>
+      <div className="flex items-center justify-between w-full max-w-7xl mx-auto mb-10 md:mb-16 text-xs text-gray-400">
+        <span className="hidden sm:block">[Over 30+ Skillset]</span>
 
         <motion.div
           ref={badgeRef}
@@ -26,7 +26,7 @@ export default function ServicesSection() {
           </span>
         </motion.div>
 
-        <span>[Crafted with passion]</span>
+        <span className="hidden sm:block">[Crafted with passion]</span>
       </div>
 
       <div className="relative flex flex-col items-center justify-center 
@@ -37,9 +37,9 @@ export default function ServicesSection() {
           whileInView={{ opacity: 0.12, y: -40 }}
           viewport={{ once: false }}
           transition={{ duration: 1.5 }}
-          className="text-[8vw] md:text-[7rem] font-black text-white 
-          opacity-0 tracking-widest leading-none mb-[-2rem] z-0 
-          pointer-events-none"
+          className="text-[12vw] sm:text-[10vw] md:text-[7rem] font-black 
+          text-white opacity-0 tracking-widest leading-none 
+          mb-[-1rem] md:mb-[-2rem] z-0 pointer-events-none"
           style={{ WebkitTextStroke: "1px rgba(255,255,255,0.3)" }}
         >
           MOTION
@@ -61,8 +61,8 @@ export default function ServicesSection() {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: false, margin: "-120px" }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="text-[10vw] md:text-[8rem] font-black text-white 
-            leading-none tracking-tight"
+            className="text-[14vw] sm:text-[12vw] md:text-[8rem] 
+            font-black text-white leading-none tracking-tight"
           >
             Branding
           </motion.h2>
@@ -73,9 +73,9 @@ export default function ServicesSection() {
           whileInView={{ opacity: 0.12, y: 40 }}
           viewport={{ once: false }}
           transition={{ duration: 1.5 }}
-          className="text-[8vw] md:text-[7rem] font-black text-white 
-          opacity-0 tracking-widest leading-none mt-[-2rem] z-0 
-          pointer-events-none"
+          className="text-[12vw] sm:text-[10vw] md:text-[7rem] font-black 
+          text-white opacity-0 tracking-widest leading-none 
+          mt-[-1rem] md:mt-[-2rem] z-0 pointer-events-none"
           style={{ WebkitTextStroke: "1px rgba(255,255,255,0.3)" }}
         >
           GRAPHIC

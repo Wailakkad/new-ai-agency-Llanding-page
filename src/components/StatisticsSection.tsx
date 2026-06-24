@@ -254,7 +254,8 @@ export default function StatisticsSection() {
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-start justify-between mb-20 gap-4"
+          className="flex items-start justify-between mb-10 md:mb-20 
+          gap-4 flex-wrap"
         >
           {/* Statistics Badge */}
           <div className="flex items-center gap-2 flex-shrink-0">
@@ -277,8 +278,8 @@ export default function StatisticsSection() {
           </div>
 
           {/* Center text */}
-          <p className="text-white/30 text-xs text-center leading-relaxed
-          max-w-[180px]">
+          <p className="hidden sm:block text-white/30 text-xs text-center 
+          leading-relaxed max-w-[180px]">
             We have significant growth
             <br />
             through the years
@@ -293,19 +294,20 @@ export default function StatisticsSection() {
         {/* ── STATS BLOCK ── */}
         <div
           ref={statsRef}
-          className="relative grid grid-cols-2 gap-0 mb-0"
+          className="relative grid grid-cols-1 sm:grid-cols-2 gap-0 mb-0"
         >
           {/* TOP RIGHT — 98% */}
           <motion.div
             initial="hidden"
             animate={statsInView ? "visible" : "hidden"}
-            className="col-start-2 flex flex-col items-start pl-8 pb-16"
+            className="col-span-1 sm:col-start-2 flex flex-col 
+            items-start pl-0 sm:pl-8 pb-8 md:pb-16"
           >
             {/* Number */}
             <div
-              className="text-[8rem] md:text-[10rem] lg:text-[12rem]
-              font-black text-white leading-none tracking-tighter
-              overflow-hidden"
+              className="text-[5rem] sm:text-[7rem] md:text-[10rem] 
+              lg:text-[12rem] font-black text-white leading-none 
+              tracking-tighter overflow-hidden"
               style={{ perspective: "800px" }}
             >
               <motion.div
@@ -346,14 +348,14 @@ export default function StatisticsSection() {
           <motion.div
             initial="hidden"
             animate={statsInView ? "visible" : "hidden"}
-            className="col-start-1 row-start-2 flex flex-col items-start
-            pt-4 pb-8"
+            className="col-span-1 sm:col-start-1 sm:row-start-2 
+            flex flex-col items-start pt-4 pb-8"
           >
             {/* Number */}
             <div
-              className="text-[8rem] md:text-[10rem] lg:text-[12rem]
-              font-black text-white leading-none tracking-tighter
-              overflow-hidden"
+              className="text-[5rem] sm:text-[7rem] md:text-[10rem] 
+              lg:text-[12rem] font-black text-white leading-none 
+              tracking-tighter overflow-hidden"
               style={{ perspective: "800px" }}
             >
               <motion.span
@@ -394,8 +396,8 @@ export default function StatisticsSection() {
         </div>
 
         {/* ── WORLD MAP + CENTER HEADLINE ── */}
-        <div className="relative w-full flex items-center
-        justify-center overflow-hidden" style={{ minHeight: "420px" }}>
+        <div         className="relative w-full flex items-center
+        justify-center overflow-hidden" style={{ minHeight: "clamp(280px, 50vw, 420px)" }}>
 
           {/* Dotted World Map — Background */}
           <motion.div
@@ -429,8 +431,9 @@ export default function StatisticsSection() {
           >
             {/* "For 10+" */}
             <div
-              className="text-[4rem] md:text-[6rem] lg:text-[7rem]
-              font-black text-white leading-tight tracking-tight"
+              className="text-[2.8rem] sm:text-[4rem] md:text-[6rem] 
+              lg:text-[7rem] font-black text-white leading-tight 
+              tracking-tight"
               style={{ perspective: "800px" }}
             >
               <SplitChars text="For 10+" baseDelay={0} />
@@ -438,8 +441,9 @@ export default function StatisticsSection() {
 
             {/* "Experience" */}
             <div
-              className="text-[4rem] md:text-[6rem] lg:text-[7rem]
-              font-black text-white leading-tight tracking-tight"
+              className="text-[2.8rem] sm:text-[4rem] md:text-[6rem] 
+              lg:text-[7rem] font-black text-white leading-tight 
+              tracking-tight"
               style={{ perspective: "800px" }}
             >
               <SplitChars text="Experience" baseDelay={7} />
@@ -462,8 +466,8 @@ export default function StatisticsSection() {
           ref={pillsRef}
           initial="hidden"
           animate={pillsInView ? "visible" : "hidden"}
-          className="relative flex items-center justify-center
-          gap-6 mt-16 flex-wrap"
+          className="relative flex items-center justify-center 
+          gap-4 md:gap-6 mt-10 md:mt-16 flex-wrap"
         >
           {/* CREATIVE Pill */}
           <motion.div
@@ -476,8 +480,8 @@ export default function StatisticsSection() {
               transition: { duration: 0.3, ease: "easeOut" },
             }}
             style={{ rotate: -8 }}
-            className="px-10 py-4 rounded-full border border-white/20
-            bg-transparent cursor-default"
+            className="px-6 sm:px-10 py-3 sm:py-4 rounded-full 
+            border border-white/20 bg-transparent cursor-default"
           >
             <span
               className="text-white text-lg md:text-xl font-bold
@@ -499,8 +503,8 @@ export default function StatisticsSection() {
               transition: { duration: 0.3, ease: "easeOut" },
             }}
             style={{ rotate: 6, marginTop: "-24px" }}
-            className="px-10 py-4 rounded-full border border-white/20
-            bg-transparent cursor-default"
+            className="px-6 sm:px-10 py-3 sm:py-4 rounded-full 
+            border border-white/20 bg-transparent cursor-default"
           >
             <span
               className="text-white text-lg md:text-xl font-bold
@@ -523,8 +527,9 @@ export default function StatisticsSection() {
               transition: { duration: 0.3, ease: "easeOut" },
             }}
             style={{ rotate: -5, marginTop: "16px" }}
-            className="px-10 py-4 rounded-full border border-cyan-400/40
-            bg-transparent cursor-default relative overflow-hidden"
+            className="px-6 sm:px-10 py-3 sm:py-4 rounded-full 
+            border border-cyan-400/40 bg-transparent cursor-default 
+            relative overflow-hidden"
           >
             {/* Subtle cyan glow inner */}
             <motion.div

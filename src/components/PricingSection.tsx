@@ -119,7 +119,7 @@ function PricingCard({
         scale: 1.02,
         transition: { duration: 0.35, ease: "easeOut" },
       }}
-      className={`relative flex flex-col rounded-2xl p-6 cursor-pointer
+      className={`relative flex flex-col rounded-2xl p-5 md:p-6 cursor-pointer
       border transition-all duration-300
       ${
         plan.featured
@@ -170,8 +170,8 @@ function PricingCard({
         />
       </div>
 
-      <h3 className="text-white text-xl font-black uppercase
-      tracking-tight mb-2">
+      <h3 className="text-white text-lg md:text-xl font-black 
+      uppercase tracking-tight mb-2">
         {plan.name}
       </h3>
 
@@ -237,8 +237,8 @@ function PricingCard({
           className={`font-black leading-none tracking-tighter
           ${
             plan.price === "CONTACT"
-              ? "text-4xl text-white/80"
-              : "text-5xl text-white"
+              ? "text-3xl md:text-4xl text-white/80"
+              : "text-4xl md:text-5xl text-white"
           }`}
         >
           {plan.price}
@@ -303,8 +303,9 @@ export default function PricingSection() {
           style={{ perspective: "1000px" }}
         >
           <div
-            className="text-[5rem] md:text-[8rem] lg:text-[10rem]
-            font-black text-white leading-none tracking-tighter"
+            className="text-[3rem] sm:text-[5rem] md:text-[8rem] 
+            lg:text-[10rem] font-black text-white leading-none 
+            tracking-tighter"
           >
             {"Pricing ".split("").map((char, i) => (
               <motion.span

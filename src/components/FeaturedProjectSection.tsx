@@ -24,11 +24,12 @@ export default function FeaturedProjectSection() {
               01
             </span>
           </motion.div>
-          <span>Project Type: UI Design</span>
-          <span>Date: July 2025</span>
+          <span className="hidden sm:block">Project Type: UI Design</span>
+          <span className="hidden sm:block">Date: July 2025</span>
         </div>
 
-        <div className="relative flex items-stretch min-h-[500px] md:min-h-[580px]">
+        <div className="relative flex flex-col md:flex-row items-stretch 
+        min-h-auto md:min-h-[580px] gap-4 md:gap-0">
 
           <motion.div
             initial={{ x: 80, opacity: 0 }}
@@ -36,7 +37,8 @@ export default function FeaturedProjectSection() {
             viewport={{ once: false, margin: "-120px" }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
             whileHover={{ scale: 1.02 }}
-            className="absolute right-0 top-0 w-[65%] h-full rounded-2xl 
+            className="relative md:absolute md:right-0 md:top-0 w-full 
+            md:w-[65%] min-h-[280px] md:min-h-full rounded-2xl 
             flex flex-col justify-between p-8 z-0 cursor-pointer"
             style={{
               background: "linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)",
@@ -44,8 +46,8 @@ export default function FeaturedProjectSection() {
           >
             <div />
             <div className="flex flex-col items-end">
-              <h3 className="text-white text-4xl md:text-5xl font-bold 
-              tracking-tight mb-auto mt-8">
+              <h3 className="text-white text-3xl sm:text-4xl md:text-5xl 
+              font-bold tracking-tight mb-auto mt-8">
                 Levi Colwill
               </h3>
             </div>
@@ -70,10 +72,10 @@ export default function FeaturedProjectSection() {
               y: -8,
               boxShadow: "0 30px 80px rgba(0,198,255,0.15)",
             }}
-            className="relative w-[55%] h-full min-h-[420px] rounded-2xl 
-            bg-[#111111] border border-white/5 flex flex-col 
+            className="relative w-full md:w-[55%] min-h-[280px] md:min-h-[420px] 
+            rounded-2xl bg-[#111111] border border-white/5 flex flex-col 
             justify-between p-6 z-10 cursor-pointer"
-            style={{ marginRight: "-80px" }}
+            style={{ marginRight: "0px" }}
           >
             <motion.button
               whileHover={{ rotate: 45, scale: 1.15 }}
@@ -120,16 +122,16 @@ export default function FeaturedProjectSection() {
           transition={{ duration: 0.5 }}
         >
           <div className="flex items-baseline gap-3">
-            <span className="text-white text-4xl md:text-5xl font-black 
-            tracking-tight">
+            <span className="text-white text-3xl sm:text-4xl md:text-5xl 
+            font-black tracking-tight">
               Levi Colwill
             </span>
-            <span className="text-cyan-400 text-2xl font-bold">[01]</span>
+            <span className="text-cyan-400 text-xl sm:text-2xl font-bold">[01]</span>
           </div>
 
           <div className="mt-1">
-            <span className="text-white text-4xl md:text-5xl font-black 
-            tracking-tight">
+            <span className="text-white text-3xl sm:text-4xl md:text-5xl 
+            font-black tracking-tight">
               Modeling 3d graphic
             </span>
           </div>

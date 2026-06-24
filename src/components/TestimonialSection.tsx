@@ -171,8 +171,8 @@ function AnimatedQuote({
   return (
     <p
       key={slideKey}
-      className="text-base md:text-lg lg:text-xl font-black
-      uppercase tracking-wide leading-snug"
+      className="text-sm sm:text-base md:text-lg lg:text-xl 
+      font-black uppercase tracking-wide leading-snug"
     >
       {words.map((word, i) => (
         <motion.span
@@ -298,7 +298,7 @@ export default function TestimonialSection() {
       </motion.div>
 
       <div className="relative max-w-6xl mx-auto">
-        <div className="grid grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-12 gap-6 md:gap-8 items-start">
 
           <motion.div
             style={{ y: cardY }}
@@ -307,7 +307,7 @@ export default function TestimonialSection() {
             <div
               className="relative rounded-2xl overflow-hidden
               border border-white/8"
-              style={{ minHeight: "420px" }}
+              style={{ minHeight: "clamp(300px, 60vw, 420px)" }}
             >
               <AnimatePresence custom={direction} mode="wait">
                 <motion.div
@@ -318,7 +318,7 @@ export default function TestimonialSection() {
                   animate="center"
                   exit="exit"
                   className="relative w-full h-full"
-                  style={{ minHeight: "420px" }}
+                  style={{ minHeight: "clamp(300px, 60vw, 420px)" }}
                 >
                   <div
                     className="absolute inset-0"
@@ -512,13 +512,13 @@ export default function TestimonialSection() {
             <motion.div
               variants={quoteMarkVariants}
               custom={0.15}
-              className="text-[5rem] leading-none text-cyan-400
-              font-black mb-2 select-none"
+              className="text-[3.5rem] sm:text-[5rem] leading-none 
+              text-cyan-400 font-black mb-2 select-none"
             >
               "
             </motion.div>
 
-            <div className="mb-8 min-h-[140px]">
+            <div className="mb-6 md:mb-8 min-h-[120px] sm:min-h-[140px]">
               <AnimatePresence custom={direction} mode="wait">
                 <motion.div
                   key={activeClient.id + "-quote"}
@@ -614,8 +614,8 @@ export default function TestimonialSection() {
             <motion.div
               variants={quoteMarkVariants}
               custom={0.4}
-              className="text-[4rem] leading-none text-cyan-400
-              font-black mt-2 text-right select-none"
+              className="text-[2.5rem] sm:text-[4rem] leading-none 
+              text-cyan-400 font-black mt-2 text-right select-none"
             >
               "
             </motion.div>

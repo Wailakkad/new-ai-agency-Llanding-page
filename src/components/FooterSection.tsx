@@ -80,7 +80,7 @@ function NavLink({
         className={`block font-black uppercase tracking-tight
         cursor-pointer leading-tight
         ${active
-          ? "text-white text-2xl md:text-3xl"
+          ? "text-white text-xl sm:text-2xl md:text-3xl"
           : "text-white/35 text-lg md:text-xl"
         }`}
         onClick={(e) => e.preventDefault()}
@@ -162,12 +162,13 @@ export default function FooterSection() {
 
         <div
           ref={topRef}
-          className="grid grid-cols-12 gap-6 mb-20 items-start"
+          className="grid grid-cols-12 gap-5 md:gap-6 
+          mb-12 md:mb-20 items-start"
         >
 
           <motion.div
             style={{ y: photoY }}
-            className="col-span-3"
+            className="col-span-6 sm:col-span-4 md:col-span-3"
           >
             <motion.div
               initial={{ opacity: 0, x: -40, scale: 0.92 }}
@@ -218,7 +219,8 @@ export default function FooterSection() {
             </motion.div>
           </motion.div>
 
-          <div className="col-span-4 col-start-5 pt-2">
+          <div className="col-span-6 sm:col-span-4 md:col-span-4 
+          md:col-start-5 pt-2">
             <motion.p
               variants={fadeUpVariants}
               custom={0.1}
@@ -254,8 +256,8 @@ export default function FooterSection() {
             </div>
           </div>
 
-          <div className="col-span-4 col-start-9 pt-2 flex
-          justify-between items-start">
+          <div className="col-span-12 sm:col-span-4 sm:col-start-9 
+          pt-2 flex justify-between items-start">
 
             <div>
               <motion.p
@@ -303,8 +305,8 @@ export default function FooterSection() {
             style={{ perspective: "1000px" }}
           >
             <div
-              className="text-[4.5rem] sm:text-[6rem] md:text-[8rem]
-              lg:text-[10rem] font-black text-white leading-none
+              className="text-[3rem] sm:text-[4.5rem] md:text-[7rem] 
+              lg:text-[10rem] font-black text-white leading-none 
               tracking-tighter select-none"
             >
               {"LOREM".split("").map((char, i) => (
@@ -342,13 +344,13 @@ export default function FooterSection() {
               ease: [0.34, 1.56, 0.64, 1],
               delay: 0.5,
             }}
-            className="flex-shrink-0 ml-4 mb-2"
+            className="flex-shrink-0 ml-2 sm:ml-4 mb-2"
           >
             <motion.div
               style={{ rotate: badgeRotate }}
               whileHover={{ scale: 1.1 }}
-              className="w-20 h-20 md:w-28 md:h-28 rounded-full
-              border border-white/15 bg-[#111111]
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 
+              rounded-full border border-white/15 bg-[#111111]
               flex items-center justify-center cursor-pointer
               relative overflow-hidden"
             >
@@ -360,7 +362,7 @@ export default function FooterSection() {
                 }}
               />
               <span
-                className="relative z-10 text-3xl md:text-4xl
+                className="relative z-10 text-2xl sm:text-3xl md:text-4xl
                 font-black text-white"
               >
                 26
@@ -374,8 +376,9 @@ export default function FooterSection() {
           initial={{ opacity: 0 }}
           animate={bottomInView ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 1.2 }}
-          className="flex items-center justify-between mt-8
-          pt-6 border-t border-white/5"
+          className="flex flex-col sm:flex-row items-start 
+          sm:items-center justify-between mt-6 md:mt-8 
+          pt-4 md:pt-6 border-t border-white/5 gap-2 sm:gap-0"
         >
           <p className="text-white/20 text-xs">
             {"\u00A9"} 2026 Lorem Agency. All rights reserved.

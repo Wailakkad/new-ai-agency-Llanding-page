@@ -129,10 +129,10 @@ export default function ContactSection() {
       className="relative w-full bg-[#080808] overflow-hidden py-24 px-6"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-12 gap-6 md:gap-8 items-start">
 
           <div className="col-span-12 md:col-span-5 flex flex-col
-          justify-between min-h-[400px]">
+          justify-between min-h-auto md:min-h-[400px]">
 
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -165,8 +165,9 @@ export default function ContactSection() {
               className="flex-1"
             >
               <div
-                className="text-[4.5rem] md:text-[5.5rem] lg:text-[6.5rem]
-                font-black text-white leading-[0.9] tracking-tighter"
+                className="text-[3rem] sm:text-[4.5rem] md:text-[5.5rem] 
+                lg:text-[6.5rem] font-black text-white leading-[0.9] 
+                tracking-tighter"
                 style={{ perspective: "800px" }}
               >
                 <div style={{ overflow: "hidden" }}>
@@ -208,7 +209,7 @@ export default function ContactSection() {
               animate={headlineInView ? "visible" : "hidden"}
               custom={1.0}
               className="text-white/30 text-xs italic leading-relaxed
-              max-w-[200px] mt-8"
+              max-w-[200px] mt-6 md:mt-8"
             >
               Drop us a line, we&apos;ll response you in 24 hours.
             </motion.p>
@@ -223,7 +224,7 @@ export default function ContactSection() {
           >
             <div
               className="rounded-2xl border border-white/8
-              bg-[#0d0d0d] p-8"
+              bg-[#0d0d0d] p-5 sm:p-8"
             >
 
               <div className="mb-6">
@@ -330,7 +331,7 @@ export default function ContactSection() {
               <motion.div
                 variants={fadeUpVariants}
                 custom={0.6}
-                className="flex flex-wrap gap-2 mb-8"
+                className="flex flex-wrap gap-2 mb-6 md:mb-8"
               >
                 {budgetOptions.map((option) => (
                   <motion.button
@@ -365,10 +366,10 @@ export default function ContactSection() {
                 ))}
               </motion.div>
 
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <MagneticButton
                   onClick={handleSubmit}
-                  className="flex-1 flex items-center justify-between
+                  className="w-full sm:flex-1 flex items-center justify-between
                   px-6 py-3.5 rounded-full bg-white/8 border
                   border-white/10 text-white text-sm font-semibold
                   hover:bg-white/15 transition-colors duration-200
@@ -392,7 +393,7 @@ export default function ContactSection() {
                 </MagneticButton>
 
                 <MagneticButton
-                  className="flex-1 flex items-center justify-between
+                  className="w-full sm:flex-1 flex items-center justify-between
                   px-6 py-3.5 rounded-full bg-white/5 border
                   border-white/10 text-white text-sm font-semibold
                   hover:bg-white/10 transition-colors duration-200

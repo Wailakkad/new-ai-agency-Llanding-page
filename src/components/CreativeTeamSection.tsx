@@ -127,12 +127,13 @@ function TeamCard({
         className="relative flex rounded-2xl overflow-hidden cursor-pointer
         border border-white/5"
         style={{
-          height: isActive ? "180px" : "130px",
+          height: isActive ? "clamp(140px, 20vw, 180px)" : "clamp(100px, 15vw, 130px)",
           transition: "height 0.5s cubic-bezier(0.16,1,0.3,1)",
         }}
       >
       <div
-        className={`relative w-40 flex-shrink-0 bg-gradient-to-br
+        className={`relative w-28 sm:w-36 md:w-40 flex-shrink-0 
+        bg-gradient-to-br
         ${member.color} overflow-hidden`}
       >
         <div
@@ -254,20 +255,20 @@ export default function CreativeTeamSection() {
           / We focus on quality products that drive result
         </motion.p>
 
-        <div className="grid grid-cols-12 gap-6 items-start">
+        <div className="grid grid-cols-12 gap-5 md:gap-6 items-start">
 
           <motion.div
             style={{ y: leftTextY }}
-            className="col-span-5 relative"
+            className="col-span-12 md:col-span-5 relative"
           >
             <motion.div
               style={{ y: ghostNumY }}
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 0.06 } : {}}
               transition={{ duration: 1.2, delay: 0.3 }}
-              className="absolute -bottom-8 -left-4 text-[12rem]
-              md:text-[16rem] font-black text-white leading-none
-              select-none pointer-events-none z-0"
+              className="absolute -bottom-4 -left-2 text-[8rem] 
+              sm:text-[12rem] md:text-[16rem] font-black text-white 
+              leading-none select-none pointer-events-none z-0"
             >
               25
             </motion.div>
@@ -300,8 +301,9 @@ export default function CreativeTeamSection() {
               className="relative z-10"
             >
               <div
-                className="text-[5rem] md:text-[7rem] lg:text-[8rem]
-                font-black text-white leading-[0.88] tracking-tighter"
+                className="text-[3.5rem] sm:text-[5rem] md:text-[7rem] 
+                lg:text-[8rem] font-black text-white leading-[0.88] 
+                tracking-tighter"
                 style={{ perspective: "800px" }}
               >
                 <div style={{ overflow: "hidden" }}>
@@ -335,7 +337,7 @@ export default function CreativeTeamSection() {
           </motion.div>
 
           <div
-            className="col-span-7 flex flex-col gap-3"
+            className="col-span-12 md:col-span-7 flex flex-col gap-3"
           >
             {teamMembers.map((member, index) => (
               <TeamCard
@@ -352,8 +354,8 @@ export default function CreativeTeamSection() {
               custom={0.8}
               className="mt-4"
             >
-              <p className="text-white text-3xl md:text-4xl font-black
-              tracking-tight leading-tight">
+              <p className="text-white text-2xl sm:text-3xl md:text-4xl 
+              font-black tracking-tight leading-tight">
                 Agencia&apos;s
                 <br />
                 playground
