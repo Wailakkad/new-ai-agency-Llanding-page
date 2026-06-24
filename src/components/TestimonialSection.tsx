@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   motion,
   useInView,
@@ -195,27 +195,31 @@ function SlideDots({
   total,
   active,
   onChange,
+  isMobile,
 }: {
   total: number;
   active: number;
   onChange: (i: number) => void;
+  isMobile: boolean;
 }) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1.5 md:gap-2">
       {Array.from({ length: total }).map((_, i) => (
         <motion.button
           key={i}
           onClick={() => onChange(i)}
           animate={{
-            width: i === active ? 24 : 8,
+            width: i === active
+              ? isMobile ? 14 : 24
+              : isMobile ? 5 : 8,
             backgroundColor:
               i === active
                 ? "#00c6ff"
                 : "rgba(255,255,255,0.2)",
           }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="h-2 rounded-full cursor-pointer border-0
-          outline-none"
+          className="h-1 md:h-2 rounded-full cursor-pointer
+          border-0 outline-none flex-shrink-0"
           aria-label={`Go to slide ${i + 1}`}
         />
       ))}
@@ -229,6 +233,14 @@ export default function TestimonialSection() {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -466,13 +478,14 @@ export default function TestimonialSection() {
               </button>
             </div>
 
-            <div className="flex items-center justify-between mt-4 px-1">
+            <div className="flex items-center justify-between mt-3 md:mt-4 px-1">
               <SlideDots
                 total={clients.length}
                 active={activeIndex}
                 onChange={goToSlide}
+                isMobile={isMobile}
               />
-              <span className="text-white/20 text-xs font-mono">
+              <span className="text-white/20 text-[10px] md:text-xs font-mono">
                 {String(activeIndex + 1).padStart(2, "0")} /{" "}
                 {String(clients.length).padStart(2, "0")}
               </span>

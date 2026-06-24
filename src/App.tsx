@@ -521,6 +521,27 @@ export default function App() {
                 <span className="text-[11px] text-zinc-500 font-mono">CORE_V4_ONLINE</span>
               </div>
 
+              {/* Primary Nav Links — shown in mobile menu only */}
+              <div className="flex flex-col gap-4 pb-6 border-b border-white/10 md:hidden">
+                {[
+                  { label: "Studio", href: "#" },
+                  { label: "Project (12)", href: "#" },
+                  { label: "Service", href: "#" },
+                  { label: "Blog", href: "#" },
+                ].map((link) => (
+                  <button
+                    key={link.label}
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setActiveTab(link.label.toLowerCase().split(" ")[0]);
+                    }}
+                    className="text-white text-2xl font-black uppercase tracking-tight hover:text-cyan-400 transition-colors duration-200 text-left cursor-pointer"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </div>
+
               {/* Menu Directory links */}
               <div className="space-y-5" id="menu-directory-stack">
                 <div className="space-y-1">

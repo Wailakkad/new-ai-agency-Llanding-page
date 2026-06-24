@@ -34,8 +34,29 @@ export default function Navigation({
       className="fixed top-0 left-0 w-full h-20 px-4 md:px-10 flex items-center justify-between z-50 pointer-events-auto select-none"
       id="main-navigation-header"
     >
+      {/* Logo — left on mobile, center on desktop */}
+      <div 
+        className="flex items-center justify-center cursor-pointer md:absolute md:left-1/2 md:-translate-x-1/2"
+        onClick={() => onTabChange("studio")}
+        title="AI Studio Home"
+        id="nav-center-logo"
+      >
+        <motion.div
+          animate={{ rotate: [0, 90, 90, 180, 180, 0] }}
+          transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
+          className="relative text-white"
+        >
+          <LayoutGrid size={28} className="stroke-[1.5] filter drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]" />
+          <motion.div
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            className="absolute top-[11px] left-[11px] w-1.5 h-1.5 bg-cyan-400 rounded-xs"
+          />
+        </motion.div>
+      </div>
+
       {/* Left side: Navigation links */}
-      <nav className="flex items-center gap-1 md:gap-2" id="nav-links-container">
+      <nav className="hidden md:flex items-center gap-1 md:gap-2" id="nav-links-container">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
           return (
@@ -73,27 +94,6 @@ export default function Navigation({
           );
         })}
       </nav>
-
-      {/* Center: Tech-style grid/cross logo */}
-      <div 
-        className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center cursor-pointer"
-        onClick={() => onTabChange("studio")}
-        title="AI Studio Home"
-        id="nav-center-logo"
-      >
-        <motion.div
-          animate={{ rotate: [0, 90, 90, 180, 180, 0] }}
-          transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
-          className="relative text-white"
-        >
-          <LayoutGrid size={28} className="stroke-[1.5] filter drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]" />
-          <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
-            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-            className="absolute top-[11px] left-[11px] w-1.5 h-1.5 bg-cyan-400 rounded-xs"
-          />
-        </motion.div>
-      </div>
 
       {/* Right side: Frosted Menu button with circular animated dot icon */}
       <div className="flex items-center gap-3" id="nav-right-actions">
