@@ -312,7 +312,7 @@ export default function App() {
 
           {/* --- HORIZONTAL BOTTOM STAT CARDS RENDERED UNDER SUBHEADING --- */}
           <div 
-            className="mt-2 z-20 pointer-events-auto"
+            className="hidden md:block mt-2 z-20 pointer-events-auto"
             id="bottom-left-metrics-panel"
           >
             <StatCardsGroup onAvatarClick={triggerCustomServiceAlignment} isHorizontal={true} />
@@ -372,7 +372,7 @@ export default function App() {
 
         {/* --- FAR RIGHT CARDS & SOCIAL PRESENCE CONTROL LAYER (right: 3%, top: 28%) --- */}
         <div 
-          className="absolute right-[3%] top-[28%] flex flex-row items-center gap-6 z-20 pointer-events-auto"
+          className="hidden md:flex absolute right-[3%] top-[28%] flex-row items-center gap-6 z-20 pointer-events-auto"
           id="right-widgets-floating-layer"
         >
           <RightSidebar 
