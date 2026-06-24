@@ -184,32 +184,12 @@ export default function AchievementsSection() {
               }}
             >
               {/* Card image area */}
-              <div
-                className="flex-1 relative overflow-hidden"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #0d1b2a 0%, #1a1a2e 100%)",
-                }}
-              >
-                <div
-                  className="absolute inset-0 opacity-60"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse at 30% 50%, " +
-                      "#00c6ff22, transparent)",
-                  }}
+              <div className="flex-1 relative overflow-hidden">
+                <img
+                  src="https://res.cloudinary.com/dhkyla1rv/image/upload/v1782232466/58118ac26e00488a36b8ab8dce44dcdb.jpg"
+                  alt="designolis"
+                  className="w-full h-full object-cover"
                 />
-                {/* Simulated UI screenshot lines */}
-                <div className="absolute inset-2 flex flex-col gap-1 
-                justify-end opacity-50">
-                  {[40, 60, 30, 50].map((w, i) => (
-                    <div
-                      key={i}
-                      className="h-0.5 rounded-full bg-cyan-400/60"
-                      style={{ width: `${w}%` }}
-                    />
-                  ))}
-                </div>
               </div>
               {/* Card label */}
               <div className="px-2 py-1 bg-[#0a0a0a] border-t border-white/5">

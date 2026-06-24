@@ -6,6 +6,7 @@ import {
   useTransform,
   Variants,
 } from "framer-motion";
+import { Instagram, Linkedin } from "lucide-react";
 
 const charVariants: Variants = {
   hidden: { y: "115%", opacity: 0, rotateX: -90 },
@@ -95,7 +96,7 @@ function SocialIcon({
   delay,
   isInView,
 }: {
-  icon: string;
+  icon: React.ReactNode;
   delay: number;
   isInView: boolean;
 }) {
@@ -199,7 +200,7 @@ export default function FooterSection() {
                 }}
               />
               <img
-                src="/footer-person.jpg"
+                src="https://res.cloudinary.com/dhkyla1rv/image/upload/v1782222146/founder.jpg"
                 alt="Team"
                 className="absolute inset-0 w-full h-full
                 object-cover object-top opacity-75
@@ -282,9 +283,9 @@ export default function FooterSection() {
             </div>
 
             <div className="flex flex-col gap-3 pt-8">
-              <SocialIcon icon="\uD835\uDD4F" delay={0.3} isInView={topInView} />
-              <SocialIcon icon="\u25CE" delay={0.4} isInView={topInView} />
-              <SocialIcon icon="\u25B6" delay={0.5} isInView={topInView} />
+              <SocialIcon icon={<span className="font-extrabold text-sm">X</span>} delay={0.3} isInView={topInView} />
+              <SocialIcon icon={<Linkedin size={16} />} delay={0.4} isInView={topInView} />
+              <SocialIcon icon={<Instagram size={16} />} delay={0.5} isInView={topInView} />
             </div>
           </div>
 
@@ -306,7 +307,7 @@ export default function FooterSection() {
               lg:text-[10rem] font-black text-white leading-none
               tracking-tighter select-none"
             >
-              {"DREATIV".split("").map((char, i) => (
+              {"LOREM".split("").map((char, i) => (
                 <motion.span
                   key={i}
                   custom={i}
@@ -377,7 +378,7 @@ export default function FooterSection() {
           pt-6 border-t border-white/5"
         >
           <p className="text-white/20 text-xs">
-            {"\u00A9"} 2025 Dreativ Agency. All rights reserved.
+            {"\u00A9"} 2026 Lorem Agency. All rights reserved.
           </p>
           <p className="text-white/20 text-xs">
             Built with passion & precision

@@ -28,7 +28,7 @@ export default function FeaturedProjectSection() {
           <span>Date: July 2025</span>
         </div>
 
-        <div className="relative flex items-stretch min-h-[420px] md:min-h-[480px]">
+        <div className="relative flex items-stretch min-h-[500px] md:min-h-[580px]">
 
           <motion.div
             initial={{ x: 80, opacity: 0 }}
